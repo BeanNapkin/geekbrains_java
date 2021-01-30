@@ -9,7 +9,7 @@ public class GuessWord {
 
         String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli", "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
 
-        String word = words[random.nextInt(words.length - 1)];
+        String word = words[random.nextInt(words.length)];
 
         System.out.println("Попробуйте угадать слово из категории еды для вегана.");
 
