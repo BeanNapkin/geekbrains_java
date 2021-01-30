@@ -58,7 +58,7 @@ public class GuessNumber {
 
     public static int createNumber() {
         Random random = new Random();
-        return random.nextInt(9);
+        return random.nextInt(10);
     }
 
 }
