@@ -15,7 +15,6 @@ public class CrossZero {
     public static Scanner scanner = new Scanner(System.in);
     public static Random random = new Random();
 
-
     public static void main(String[] args) {
 
         field = createField();
@@ -24,7 +23,6 @@ public class CrossZero {
         printField();
 
         boolean isGameContinue = true;
-
 
         while (isGameContinue) {
             for (int i = 0; i < PLAYERS_SYMBOLS.length; i++) {
@@ -47,10 +45,8 @@ public class CrossZero {
                 }
             }
         }
-
         scanner.close();
     }
-
 
     public static char[][] createField() {
         char[][] field = new char[FIELD_SIZE][FIELD_SIZE];
@@ -95,7 +91,6 @@ public class CrossZero {
         field[x][y] = USER_SYMBOL;
 
         printField();
-
     }
 
     public static void computersTurn(char symb) {
@@ -103,21 +98,19 @@ public class CrossZero {
         if (isAnyCellForBlock()) {
             for (int i = 0; i < FIELD_SIZE; i++) {
                 if (isAnyCellForBlockInRow(i, field)) {
-                    findCellForBlockInRow(i, field, symb);
+                    BlockCellInRow(i, field, symb);
                 }
                 if (isAnyCellForBlockInColumn(i, field)) {
-                    findCellForBlockInColumn(i, field, symb);
+                    BlockCellInColumn(i, field, symb);
                 }
             }
-
             if (isAnyCellForBlockInRightDiagonal(field)) {
-                findCellForBlockInRightDiagonal(field, symb);
+                BlockCellInRightDiagonal(field, symb);
             }
             if (isAnyCellForBlockInLeftDiagonal(field)) {
-                findCellForBlockInLeftDiagonal(field, symb);
+                BlockCellInLeftDiagonal(field, symb);
             }
         } else {
-
 
             int x = 0;
             int y = 0;
@@ -130,7 +123,6 @@ public class CrossZero {
             field[x][y] = symb;
 
         }
-
         System.out.println("Ход компьютера");
         printField();
     }
@@ -180,7 +172,6 @@ public class CrossZero {
             if (field[i][columnIndex] == USER_SYMBOL) {
                 countSymb++;
             }
-
         }
         return (countEmptyCells == 1 && countSymb == FIELD_SIZE - 1);
     }
@@ -197,7 +188,6 @@ public class CrossZero {
                 countSymb++;
             }
         }
-
         return (countEmptyCells == 1 && countSymb == FIELD_SIZE - 1);
     }
 
@@ -225,7 +215,7 @@ public class CrossZero {
         return isAnyCellForBlockInLeftDiagonal(field) || isAnyCellForBlockInRightDiagonal(field);
     }
 
-    public static void findCellForBlockInRow(int rowIndex, char[][] field, char symb) {
+    public static void BlockCellInRow(int rowIndex, char[][] field, char symb) {
         for (int i = 0; i < FIELD_SIZE; i++) {
             if (field[rowIndex][i] == EMPTY_CELL) {
                 field[rowIndex][i] = symb;
@@ -233,7 +223,7 @@ public class CrossZero {
         }
     }
 
-    public static void findCellForBlockInColumn(int columnIndex, char[][] field, char symb) {
+    public static void BlockCellInColumn(int columnIndex, char[][] field, char symb) {
         for (int i = 0; i < FIELD_SIZE; i++) {
             if (field[i][columnIndex] == EMPTY_CELL) {
                 field[i][columnIndex] = symb;
@@ -241,7 +231,7 @@ public class CrossZero {
         }
     }
 
-    public static void findCellForBlockInRightDiagonal(char[][] field, char symb) {
+    public static void BlockCellInRightDiagonal(char[][] field, char symb) {
         for (int j = FIELD_SIZE - 1, i = 0; j >= 0 && i < FIELD_SIZE; j--, i++) {
             if (field[i][j] == EMPTY_CELL) {
                 field[i][j] = symb;
@@ -249,14 +239,13 @@ public class CrossZero {
         }
     }
 
-    public static void findCellForBlockInLeftDiagonal(char[][] field, char symb) {
+    public static void BlockCellInLeftDiagonal(char[][] field, char symb) {
         for (int i = 0; i < FIELD_SIZE; i++) {
             if (field[i][i] == EMPTY_CELL) {
                 field[i][i] = symb;
             }
         }
     }
-
 
     public static boolean checkLeftDiagonal(char[][] field, char symb) {
         for (int i = 0; i < FIELD_SIZE; i++) {
@@ -275,7 +264,6 @@ public class CrossZero {
         }
         return true;
     }
-
 
     public static boolean checkRow(int rowIndex, char[][] field, char symb) {
         for (int i = 0; i < FIELD_SIZE; i++) {
@@ -303,7 +291,6 @@ public class CrossZero {
         }
         return checkLeftDiagonal(field, symb) || checkRightDiagonal(field, symb);
     }
-
 }
 
 
